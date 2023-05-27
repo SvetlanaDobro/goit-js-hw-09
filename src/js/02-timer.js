@@ -52,10 +52,9 @@ class Timer {
 
       this.onTick({ days, hours, minutes, seconds });
 
-      if (deltaTime<=0) {
+      if (deltaTime <= 0) {
         this.stop();
       }
-
     }, 1000);
   }
 
