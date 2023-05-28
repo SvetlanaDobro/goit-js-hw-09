@@ -16,9 +16,9 @@ const options = {
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  onClose(selectedDates) {
-    const selectedDate = selectedDates[0];
-    if (selectedDate < new Date()) {
+  onClose([{selectedDate}]) {
+    
+    if (selectedDate < Date.now()) {
       window.alert("Please choose a date in the future");
       refs.startBtn.disabled = true;
     } else {
@@ -100,10 +100,10 @@ const startTime = () => {
 refs.startBtn.addEventListener('click', startTime);
 
 function upDateClockFace({ days, hours, minutes, seconds }) {
-  refs.dataDays.textContent = `${days}`;
-  refs.dataHours.textContent = `${hours}`;
-  refs.dataMinutes.textContent = `${minutes}`;
-  refs.dataSeconds.textContent = `${seconds}`;
+  refs.dataDays.textContent = days >= 0 ?`${days}`:'00';
+  refs.dataHours.textContent = hours >= 0 ? `${hours}` : '00';
+  refs.dataMinutes.textContent = minutes >= 0 ? `${minutes}` : '00';
+  refs.dataSeconds.textContent = seconds >= 0 ? `${seconds}` : '00';
 }
 
 
